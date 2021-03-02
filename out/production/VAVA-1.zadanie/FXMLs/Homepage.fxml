@@ -28,7 +28,7 @@
          <top>
             <HBox prefHeight="109.0" prefWidth="1301.0" style="-fx-background-color: #eeeeee;" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="109.0" prefWidth="478.0">
+                  <HBox alignment="CENTER" prefHeight="109.0" prefWidth="376.0">
                      <children>
                         <Label text="Easy invoices">
                            <font>
@@ -37,21 +37,21 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="109.0" prefWidth="831.0" spacing="20.0">
+                  <HBox alignment="CENTER" prefHeight="109.0" prefWidth="926.0" spacing="20.0">
                      <children>
-                        <Button fx:id="customersButton" mnemonicParsing="false" onAction="#customersClicked" prefHeight="45.0" prefWidth="200.0" text="Customers">
+                        <Button fx:id="homeButton" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" text="Home">
                            <font>
                               <Font size="18.0" />
                            </font></Button>
-                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" text="Goods">
+                        <Button fx:id="productsButton" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" text="Products">
                            <font>
                               <Font size="18.0" />
                            </font></Button>
-                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" text="Invoices">
+                        <Button fx:id="invoicesButton" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" text="Invoices">
                            <font>
                               <Font size="18.0" />
                            </font></Button>
-                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="50.0" style="-fx-background-color: red;" text="X">
+                        <Button fx:id="customersButton1" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" text="Customers">
                            <font>
                               <Font size="18.0" />
                            </font>
