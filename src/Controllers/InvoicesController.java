@@ -1,4 +1,4 @@
 package Controllers;
 
-public class InvoicesController extends NavbarController{
+public class InvoicesController extends HomepageController {
 }

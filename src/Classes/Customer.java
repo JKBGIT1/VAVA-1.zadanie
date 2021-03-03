@@ -5,7 +5,25 @@ public class Customer {
     private String lastName;
     private String street;
     private String houseNumber;
+    private String city;
     private String postalCode;
+
+    public Customer(String firstName, String lastName, String street, String houseNumber, String city, String postalCode) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.street = street;
+        this.houseNumber = houseNumber;
+        this.city = city;
+        this.postalCode = postalCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public String getFirstName() {
         return firstName;

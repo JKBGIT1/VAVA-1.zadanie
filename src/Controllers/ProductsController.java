@@ -1,5 +1,5 @@
 package Controllers;
 
-public class ProductsController extends NavbarController {
+public class ProductsController extends HomepageController {
 
 }
