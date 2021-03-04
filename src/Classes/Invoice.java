@@ -12,9 +12,8 @@ public class Invoice {
     private ObservableList<Product> invoiceProductsObservableList = FXCollections.observableArrayList();
     private double totalPrice;
 
-    public Invoice(Date date, double totalPrice, Customer customer) {
+    public Invoice(Date date, Customer customer) {
         this.date = date;
-        this.totalPrice = totalPrice;
         this.customer = customer;
     }
 

@@ -118,7 +118,10 @@
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <TextArea fx:id="taDescription" prefHeight="403.0" prefWidth="768.0" />
+                                <TextArea fx:id="taDescription" prefHeight="403.0" prefWidth="768.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font></TextArea>
                             </children>
                         </VBox>
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="7.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />

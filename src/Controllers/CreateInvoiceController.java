@@ -24,7 +24,7 @@ public class CreateInvoiceController extends HomepageController implements Initi
     private TableColumn<Customer, String> firstNameCol, lastNameCol, streetCol, houseNumberCol, cityCol, postalCodeCol;
 
     @FXML
-    private TextField tfDate, tfTotalPrice;
+    private TextField tfDate;
 
     public CreateInvoiceController(
             ObservableList<Customer> customersObservableList,
@@ -39,11 +39,21 @@ public class CreateInvoiceController extends HomepageController implements Initi
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Each column will have set value based on the private parameter in Customer Class
-        this.setCellValuesForCustomersTableView(firstNameCol, lastNameCol, streetCol, houseNumberCol, cityCol, postalCodeCol);
+        // If new Invoice was already created set text to textFields
+        try {
+            if (this.getSelectedInvoice() != null) {
+                Invoice currentInvoice = this.getSelectedInvoice();
+                tfDate.setText(this.convertDateToString(currentInvoice.getDate()));
+            }
 
-        // This function display data in tableView
-        this.displayInTable();
+            // Each column will have set value based on the private parameter in Customer Class
+            this.setCellValuesForCustomersTableView(firstNameCol, lastNameCol, streetCol, houseNumberCol, cityCol, postalCodeCol);
+
+            // This function display data in tableView
+            this.displayInTable();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void displayInTable() {
@@ -59,28 +69,51 @@ public class CreateInvoiceController extends HomepageController implements Initi
                     return;
                 }
 
-                double totalPrice = this.convertStringToDouble(tfTotalPrice.getText()); // If user didn't enter number catch will handle it
+//                double totalPrice = this.convertStringToDouble(tfTotalPrice.getText()); // If user didn't enter number catch will handle it
                 Customer selectedCustomer = customersTableView.getSelectionModel().getSelectedItem();
+                // Before setting selectedInvoice in new Controller program creates new object of Invoice
+                this.changeToCreateInvoiceSelectProductsScene(event, new Invoice(date, selectedCustomer));
 
-                // Before changing scene we need to set proper scenePath and controller
-                this.setScenePath(CREATE_INVOICE_SELECT_PRODUCTS_SCENE);
-                // Passing data about customers, products and invoices to next controller
-                // Thanks to constructor we set selectedInvoice to new controller, which will be loaded with new scene
-                CreateInvoiceSelectProductsController newController = new CreateInvoiceSelectProductsController(
-                        this.getCustomersObservableList(),
-                        this.getProductsObservableList(),
-                        this.getInvoicesObservableList(),
-                        new Invoice(date, totalPrice, selectedCustomer) // Before setting selectedInvoice program creates new object of it
-                );
+            } else if (this.getSelectedInvoice() != null) { // Invoice was already created and it is stored in selectedInvoice
+                // Need to check if user wants to change some data in Invoice
+                Date date = this.convertStringToDate(tfDate.getText()); // If user enter wrong date format next condition will take care of it
+                if (date == null) {
+                    this.showErrorPopUp(ERROR, "Check date format in date of issue. It should be like 'dd.mm.yyyy'");
+                    return;
+                }
 
-                this.setController(newController);
-                this.switchScene(event);
+//                double totalPrice = this.convertStringToDouble(tfTotalPrice.getText()); // If user didn't enter number catch will handle it
+                this.getSelectedInvoice().setDate(date);
+
+                // User select a new customer for this Invoice
+                if (customersTableView.getSelectionModel().getSelectedItem() != null) {
+                    this.getSelectedInvoice().setCustomer(customersTableView.getSelectionModel().getSelectedItem());
+                }
+
+                this.changeToCreateInvoiceSelectProductsScene(event, this.getSelectedInvoice());
+
+
             } else {
                 this.showSuccessPopUp(INFORMATION, "You need to select a customer from table.");
             }
         } catch (Exception e) {
-            this.showErrorPopUp(ERROR, "Enter number in Total price text field.");
             System.out.println(e.getMessage());
         }
+    }
+
+    private void changeToCreateInvoiceSelectProductsScene(ActionEvent event, Invoice invoice) {
+        // Before changing scene we need to set proper scenePath and controller
+        this.setScenePath(CREATE_INVOICE_SELECT_PRODUCTS_SCENE);
+        // Passing data about customers, products and invoices to next controller
+        // Thanks to constructor we set selectedInvoice to new controller, which will be loaded with new scene
+        CreateInvoiceSelectProductsController newController = new CreateInvoiceSelectProductsController(
+                this.getCustomersObservableList(),
+                this.getProductsObservableList(),
+                this.getInvoicesObservableList(),
+                invoice
+        );
+
+        this.setController(newController);
+        this.switchScene(event);
     }
 }

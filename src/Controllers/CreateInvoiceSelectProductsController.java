@@ -54,7 +54,17 @@ public class CreateInvoiceSelectProductsController extends HomepageController im
     }
 
     public void backToCreateInvoiceScene(ActionEvent event) {
+        this.setScenePath(CREATE_INVOICE_SCENE);
+        // Passing data about customers, products and invoices to next controller
+        CreateInvoiceController createInvoiceController = new CreateInvoiceController(
+                this.getCustomersObservableList(),
+                this.getProductsObservableList(),
+                this.getInvoicesObservableList(),
+                this.getSelectedInvoice()
+        );
 
+        this.setController(createInvoiceController);
+        this.switchScene(event);
     }
 
     public void addProductToInvoice() {
