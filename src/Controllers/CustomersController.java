@@ -70,7 +70,7 @@ public class CustomersController extends HomepageController implements Initializ
             this.setController(editCustomerController);
             this.switchScene(event);
         } else { // If user didn't select customer, there will be an info message
-            System.out.println("You have to choose a user.");
+            this.showSuccessPopUp(INFORMATION, "You need to select a customer from table.");
         }
     }
 

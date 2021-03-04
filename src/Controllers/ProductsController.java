@@ -67,7 +67,7 @@ public class ProductsController extends HomepageController implements Initializa
             this.setController(editProductController);
             this.switchScene(event);
         } else { // If user didn't select customer, there will be an info message
-            System.out.println("You have to choose a product.");
+            this.showSuccessPopUp(INFORMATION, "You need to select a product from table.");
         }
     }
 

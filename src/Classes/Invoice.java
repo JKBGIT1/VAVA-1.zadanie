@@ -1,11 +1,15 @@
 package Classes;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.Date;
 
 public class Invoice {
     private Date date;
+    private String customerFullName;
     private Customer customer;
-    // Add array of all products in invoice with their count number
+    private ObservableList<Product> invoiceProductsObservableList = FXCollections.observableArrayList();
     private double totalPrice;
 
     public Date getDate() {
@@ -16,12 +20,28 @@ public class Invoice {
         this.date = date;
     }
 
+    public String getCustomerFullName() {
+        return customerFullName;
+    }
+
+    public void setCustomerFullName(String customerFullName) {
+        this.customerFullName = customerFullName;
+    }
+
     public Customer getCustomer() {
         return customer;
     }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public ObservableList<Product> getInvoiceProductsObservableList() {
+        return invoiceProductsObservableList;
+    }
+
+    public void setInvoiceProductsObservableList(ObservableList<Product> invoiceProductsObservableList) {
+        this.invoiceProductsObservableList = invoiceProductsObservableList;
     }
 
     public double getTotalPrice() {

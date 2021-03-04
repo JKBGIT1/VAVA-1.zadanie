@@ -24,10 +24,13 @@ public class HomepageController {
     public static final String INVOICES = "Invoices";
     public static final String HOME = "Home";
 
+    // Header contexts of PopUps windows
     public static final String CREATION_SUCCESS = "Creation success";
     public static final String EDIT_SUCCESS = "Edit success";
-    public static final String ERROR = "Something went wrong.";
+    public static final String ERROR = "Something went wrong";
+    public static final String INFORMATION = "Information";
 
+    // Paths to fxmls files, which are used, for switching between scenes
     public static final String CUSTOMERS_SCENE = "../FXMLs/CustomersScene.fxml";
     public static final String PRODUCTS_SCENE = "../FXMLs/ProductsScene.fxml";
     public static final String INVOICES_SCENE = "../FXMLs/InvoicesScene.fxml";
@@ -36,13 +39,18 @@ public class HomepageController {
     public static final String EDIT_CUSTOMER_SCENE = "../FXMLs/EditCustomerScene.fxml";
     public static final String CREATE_PRODUCT_SCENE = "../FXMLs/CreateProductScene.fxml";
     public static final String EDIT_PRODUCT_SCENE = "../FXMLs/EditProductScene.fxml";
+    public static final String DETAIL_INVOICE_SCENE = "../FXMLs/DetailInvoiceScene.fxml";
+    public static final String CREATE_INVOICE_SCENE = "../FXMLs/CreateInvoiceScene.fxml";
 
     private String scenePath = "";
     private Object controller = null;
 
-    // These variables are needed for editing pages.
+    // These attributes are needed for editing pages.
     private Customer selectedCustomer = null;
     private Product selectedProduct = null;
+
+    // These attribute is needed for detail displaying of invoice
+    private Invoice selectedInvoice = null;
 
     // List of all customers, which were created in system and will be displayed in CustomersScene.fxml scene table
     private ObservableList<Customer> customersObservableList = FXCollections.observableArrayList();
@@ -93,6 +101,14 @@ public class HomepageController {
 
     public void setSelectedProduct(Product selectedProduct) {
         this.selectedProduct = selectedProduct;
+    }
+
+    public Invoice getSelectedInvoice() {
+        return selectedInvoice;
+    }
+
+    public void setSelectedInvoice(Invoice selectedInvoice) {
+        this.selectedInvoice = selectedInvoice;
     }
 
     public ObservableList<Customer> getCustomersObservableList() {
@@ -152,6 +168,11 @@ public class HomepageController {
     // This function is used in EditProductController and CreateProductContorller, when user click on Back button
     public void backToProductsScene(ActionEvent event) {
         this.setControllerAndPathForProductsScene();
+        this.switchScene(event);
+    }
+
+    public void backToInvoicesScene(ActionEvent event) {
+        this.setControllerAndPathForInvoicesScene();
         this.switchScene(event);
     }
 
