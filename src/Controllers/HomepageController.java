@@ -33,11 +33,15 @@ public class HomepageController {
     public static final String HOMEPAGE = "../FXMLs/Homepage.fxml";
     public static final String CREATE_CUSTOMER_SCENE = "../FXMLs/CreateCustomerScene.fxml";
     public static final String EDIT_CUSTOMER_SCENE = "../FXMLs/EditCustomerScene.fxml";
+    public static final String CREATE_PRODUCT_SCENE = "../FXMLs/CreateProductScene.fxml";
+    public static final String EDIT_PRODUCT_SCENE = "../FXMLs/EditProductScene.fxml";
 
     private String scenePath = "";
     private Object controller = null;
 
+    // These variables are needed for editing pages.
     private Customer selectedCustomer = null;
+    private Product selectedProduct = null;
 
     // List of all customers, which were created in system and will be displayed in CustomersScene.fxml scene table
     private ObservableList<Customer> customersObservableList = FXCollections.observableArrayList();
@@ -80,6 +84,14 @@ public class HomepageController {
 
     public void setSelectedCustomer(Customer selectedCustomer) {
         this.selectedCustomer = selectedCustomer;
+    }
+
+    public Product getSelectedProduct() {
+        return selectedProduct;
+    }
+
+    public void setSelectedProduct(Product selectedProduct) {
+        this.selectedProduct = selectedProduct;
     }
 
     public ObservableList<Customer> getCustomersObservableList() {

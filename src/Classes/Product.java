@@ -3,8 +3,14 @@ package Classes;
 public class Product {
     private String name;
     private String description;
-    private int count;
+    private int count = 1; // Value of this attribute shows how many types of this products are in one Invoice. By default 1.
     private double price;
+
+    public Product(String name, String description, double price) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
 
     public String getName() {
         return name;
@@ -30,8 +36,9 @@ public class Product {
         this.count = count;
     }
 
-    public double getPrice() {
-        return price;
+    // This getter needs to return string because of displaying product in tableView
+    public String getPrice() {
+        return Double.toString(price);
     }
 
     public void setPrice(double price) {

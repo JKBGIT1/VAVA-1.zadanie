@@ -40,7 +40,7 @@ public class CustomersController extends HomepageController implements Initializ
         postalCodeCol.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
 
         // This function display data in tableView
-        displayInTable();
+        this.displayInTable();
     }
 
     /*
@@ -48,7 +48,7 @@ public class CustomersController extends HomepageController implements Initializ
      */
 
     // This will display all customers in customerTableView
-    public void displayInTable() {
+    private void displayInTable() {
         customersTableView.setItems(this.getCustomersObservableList());
     }
 
