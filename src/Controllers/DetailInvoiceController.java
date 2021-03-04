@@ -42,7 +42,7 @@ public class DetailInvoiceController extends HomepageController implements Initi
 
             // Set labels text form Invoice object
             // Before setting text to label it will convert Date to String
-            dateLabel.setText(this.convertDateToString(invoice.getDate()));
+            dateLabel.setText(this.convertDateToString(invoice.getDateInDate()));
             // Before setting text to label it will convert double to String
             totalPriceLabel.setText(this.convertDoubleToString(invoice.getTotalPrice()));
             // Set labels text from Customer object, which figures as attribute in Invoice object

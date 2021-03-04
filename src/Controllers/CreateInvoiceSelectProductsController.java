@@ -67,11 +67,49 @@ public class CreateInvoiceSelectProductsController extends HomepageController im
         this.switchScene(event);
     }
 
-    public void addProductToInvoice() {
+    public void removeProductFromInvoice() {
+        if (selectedProductsTableView.getSelectionModel().getSelectedItem() == null) {
+            this.showErrorPopUp(INFORMATION, "You need to select product in 'Products in invoice' table, if you want to remove it.");
+        } else {
+            ObservableList<Product> selectedProducts = this.getSelectedInvoice().getInvoiceProductsObservableList();
+            // Remove selected item from products in current Invoice
+            selectedProducts.remove(selectedProductsTableView.getSelectionModel().getSelectedItem());
+        }
+    }
 
+    public void addProductToInvoice() {
+        if (allProductsTableView.getSelectionModel().getSelectedItem() == null) {
+            this.showErrorPopUp(INFORMATION, "You need to select product in 'All products' table, if you want to add it to Invoice.");
+        } else {
+            ObservableList<Product> selectedProducts = this.getSelectedInvoice().getInvoiceProductsObservableList();
+            // Add selected product from All products table to all products in current Invoice
+            selectedProducts.add(allProductsTableView.getSelectionModel().getSelectedItem());
+        }
     }
 
     public void createProductScene(ActionEvent event) {
+        Invoice selectedInvoice = this.getSelectedInvoice();
+        ObservableList<Product> productsInInvoice = selectedInvoice.getInvoiceProductsObservableList();
 
+        double invoiceTotalPrice = 0;
+
+        // loop through every single product in selectedInvoice
+        for (Product product : productsInInvoice) {
+            // Need to parse price from String to double before adding to invoiceTotalPrice
+            invoiceTotalPrice += (Double.parseDouble(product.getPrice()) * product.getCount());
+        }
+
+        // Set totalPrice to selectedInvoice
+        selectedInvoice.setTotalPrice(invoiceTotalPrice);
+        // Set customer full name for better info in Invoice tableView
+        String customerFullName = selectedInvoice.getCustomer().getFirstName() + " " + selectedInvoice.getCustomer().getLastName();
+        selectedInvoice.setCustomerFullName(customerFullName);
+        // Add selectedInvoice to list with all invoices in this system
+        this.getInvoicesObservableList().add(selectedInvoice);
+        // Inform user about Invoice creation
+        this.showSuccessPopUp(CREATION_SUCCESS, "Invoice was successfully created");
+        // Finally change to Invoices scene
+        this.setControllerAndPathForInvoicesScene();
+        this.switchScene(event);
     }
 }

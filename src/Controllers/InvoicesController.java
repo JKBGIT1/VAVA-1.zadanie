@@ -20,9 +20,7 @@ public class InvoicesController extends HomepageController implements Initializa
     private TableView<Invoice> invoicesTableView;
 
     @FXML // These columns are columns in the invoicesTableView
-    private TableColumn<Invoice, String> customerFullNameCol;
-    @FXML
-    private TableColumn<Invoice, Date> dateCol;
+    private TableColumn<Invoice, String> customerFullNameCol, dateCol;
     @FXML
     private TableColumn<Invoice, Double> totalPriceCol;
 

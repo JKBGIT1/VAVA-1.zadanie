@@ -43,7 +43,7 @@ public class CreateInvoiceController extends HomepageController implements Initi
         try {
             if (this.getSelectedInvoice() != null) {
                 Invoice currentInvoice = this.getSelectedInvoice();
-                tfDate.setText(this.convertDateToString(currentInvoice.getDate()));
+                tfDate.setText(currentInvoice.getDate());
             }
 
             // Each column will have set value based on the private parameter in Customer Class

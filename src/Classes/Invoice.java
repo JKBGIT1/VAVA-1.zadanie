@@ -3,6 +3,8 @@ package Classes;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Invoice {
@@ -17,7 +19,12 @@ public class Invoice {
         this.customer = customer;
     }
 
-    public Date getDate() {
+    public String getDate() {
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        return dateFormat.format(date);
+    }
+
+    public Date getDateInDate() {
         return date;
     }
 

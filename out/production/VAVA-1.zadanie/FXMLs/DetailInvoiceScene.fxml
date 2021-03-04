@@ -101,7 +101,7 @@
                                       </Label>
                                   </children>
                               </HBox>
-                              <TableView fx:id="productsTableView" prefHeight="315.0" prefWidth="990.0">
+                              <TableView fx:id="productsInInvoiceTableView" prefHeight="315.0" prefWidth="990.0">
                                   <columns>
                                       <TableColumn fx:id="nameCol" prefWidth="237.0" text="Name" />
                                       <TableColumn fx:id="descriptionCol" prefWidth="454.0" text="Description" />

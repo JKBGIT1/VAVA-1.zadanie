@@ -114,25 +114,6 @@
                                 </TableView>
                             </children>
                         </VBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2">
-                            <children>
-                                <Label text="Total price:">
-                                    <font>
-                                        <Font name="System Bold" size="24.0" />
-                                    </font>
-                                </Label>
-                                <Label fx:id="totalPriceLabel">
-                                    <font>
-                                        <Font size="24.0" />
-                                    </font>
-                                </Label>
-                        <TextField fx:id="tfTotalPrice">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </TextField>
-                            </children>
-                        </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
                             <children>
                                 <Label text="Date of Issue:">
