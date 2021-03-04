@@ -38,8 +38,8 @@ public class EditCustomerController extends HomepageController implements Initia
             customer.setCity(tfCity.getText());
             customer.setPostalCode(tfPostalCode.getText());
 
-            // Let user know, that customer editing was succesfull
-            this.showSuccessPopUp(CREATION_SUCCESS, "Customer was successfully edited.");
+            // Let user know, that customer editing was successful
+            this.showSuccessPopUp(EDIT_SUCCESS, "Customer was successfully edited.");
         } catch (Exception e) {
             showErrorPopUp(ERROR, "Try check input types in text fields.");
             e.printStackTrace();

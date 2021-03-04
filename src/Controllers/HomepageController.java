@@ -25,6 +25,7 @@ public class HomepageController {
     public static final String HOME = "Home";
 
     public static final String CREATION_SUCCESS = "Creation success";
+    public static final String EDIT_SUCCESS = "Edit success";
     public static final String ERROR = "Something went wrong.";
 
     public static final String CUSTOMERS_SCENE = "../FXMLs/CustomersScene.fxml";
@@ -122,11 +123,35 @@ public class HomepageController {
      * End of Getters and Setters
      */
 
+    /*
+     * Converting methods
+     */
+
+    public double convertStringToDouble(String stringNumber) {
+        // NOTE: This function needs to be used inside try and catch
+        // Before parse replace commas with dots to prevent error
+        double doubleNumber = Double.parseDouble(stringNumber.replaceAll(",","."));
+
+        // If user didn't use zero as an input then we floor this number on two decimals
+        if (doubleNumber != 0) {
+            doubleNumber = Math.floor(doubleNumber * 100) / 100; // Taken from https://stackoverflow.com/questions/7747469/how-can-i-truncate-a-double-to-only-two-decimal-places-in-java
+        }
+        return doubleNumber;
+    }
+
+    /*
+     * End of Converting methods
+     */
+
     // This function is used in EditCustomerController and CreateCustomerContorller, when user click on Back button
     public void backToCustomersScene(ActionEvent event) {
-        // When returning from EditCustomerScene.fxml scene we need to set selectedCustomer back to null
-        // it doesn't have impact on other scenes, so we can set it to null even when we go from CreateCustomerScene.fxml scene
         this.setControllerAndPathForCustomersScene();
+        this.switchScene(event);
+    }
+
+    // This function is used in EditProductController and CreateProductContorller, when user click on Back button
+    public void backToProductsScene(ActionEvent event) {
+        this.setControllerAndPathForProductsScene();
         this.switchScene(event);
     }
 
