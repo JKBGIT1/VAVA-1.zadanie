@@ -84,7 +84,7 @@
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <TextField prefWidth="281.0">
+                                <TextField fx:id="tfFirstName" prefWidth="281.0">
                                     <font>
                                         <Font size="20.0" />
                                     </font>
@@ -98,7 +98,7 @@
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <TextField>
+                                <TextField fx:id="tfHouseNumber">
                                     <font>
                                         <Font size="20.0" />
                                     </font>
@@ -130,7 +130,7 @@
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <TextField>
+                                <TextField fx:id="tfStreet">
                                     <font>
                                         <Font size="20.0" />
                                     </font>
@@ -144,7 +144,7 @@
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <TextField>
+                                <TextField fx:id="tfCity">
                                     <font>
                                         <Font size="20.0" />
                                     </font>
@@ -158,7 +158,7 @@
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <TextField>
+                                <TextField fx:id="tfLastName">
                                     <font>
                                         <Font size="20.0" />
                                     </font>
@@ -172,7 +172,7 @@
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <TextField>
+                                <TextField fx:id="tfPostalCode">
                                     <font>
                                         <Font size="20.0" />
                                     </font>

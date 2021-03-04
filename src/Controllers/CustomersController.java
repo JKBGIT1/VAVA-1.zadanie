@@ -1,6 +1,9 @@
 package Controllers;
 
 import Classes.Customer;
+import Classes.Invoice;
+import Classes.Product;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +20,14 @@ public class CustomersController extends HomepageController implements Initializ
 
     @FXML // These columns are columns in the customerTableView
     private TableColumn<Customer, String> firstNameCol, lastNameCol, streetCol, houseNumberCol, cityCol, postalCodeCol;
+
+    public CustomersController(
+            ObservableList<Customer> customersObservableList,
+            ObservableList<Product> productsObservableList,
+            ObservableList<Invoice> invoicesObservableList
+    ) {
+        super(customersObservableList, productsObservableList, invoicesObservableList);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,8 +55,20 @@ public class CustomersController extends HomepageController implements Initializ
     // Changing scene from CustomersScene.fxml to EditCustomerScene.fxml
     public void editCustomerScene(ActionEvent event) {
         // On CustomersScene.fxml scene user has to select customer, which he/she wants to edit
-        if (this.getSelectedCustomer() != null) {
-            this.changeScene(event);
+        if (customersTableView.getSelectionModel().getSelectedItem() != null) {
+            // Before changing scene we need to set proper scenePath and controller
+            this.setScenePath(EDIT_CUSTOMER_SCENE);
+            // Passing data about customers, products and invoices to next controller
+            // Thanks to constructor we set selectedCustomer to new controller, which will be loaded with new scene
+            EditCustomerController editCustomerController = new EditCustomerController(
+                    this.getCustomersObservableList(),
+                    this.getProductsObservableList(),
+                    this.getInvoicesObservableList(),
+                    customersTableView.getSelectionModel().getSelectedItem()
+            );
+
+            this.setController(editCustomerController);
+            this.switchScene(event);
         } else { // If user didn't select customer, there will be an info message
             System.out.println("You have to choose a user.");
         }
@@ -54,7 +77,14 @@ public class CustomersController extends HomepageController implements Initializ
     // Changing scene from CustomersScene.fxml to CreateCustomerScene.fxml
     public void createCustomerScene(ActionEvent event) {
         this.setScenePath(CREATE_CUSTOMER_SCENE);
-        this.setController(new CreateCustomerController());
-        this.changeScene(event);
+        // Passing data about customers, products and invoices to next controller
+        CreateCustomerController createCustomerController = new CreateCustomerController(
+                this.getCustomersObservableList(),
+                this.getProductsObservableList(),
+                this.getInvoicesObservableList()
+        );
+
+        this.setController(createCustomerController);
+        this.switchScene(event);
     }
 }

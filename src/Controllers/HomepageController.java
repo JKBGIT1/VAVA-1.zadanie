@@ -1,6 +1,8 @@
 package Controllers;
 
 import Classes.Customer;
+import Classes.Invoice;
+import Classes.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,8 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -20,11 +24,15 @@ public class HomepageController {
     public static final String INVOICES = "Invoices";
     public static final String HOME = "Home";
 
+    public static final String CREATION_SUCCESS = "Creation success";
+    public static final String ERROR = "Something went wrong.";
+
     public static final String CUSTOMERS_SCENE = "../FXMLs/CustomersScene.fxml";
     public static final String PRODUCTS_SCENE = "../FXMLs/ProductsScene.fxml";
     public static final String INVOICES_SCENE = "../FXMLs/InvoicesScene.fxml";
     public static final String HOMEPAGE = "../FXMLs/Homepage.fxml";
     public static final String CREATE_CUSTOMER_SCENE = "../FXMLs/CreateCustomerScene.fxml";
+    public static final String EDIT_CUSTOMER_SCENE = "../FXMLs/EditCustomerScene.fxml";
 
     private String scenePath = "";
     private Object controller = null;
@@ -33,6 +41,18 @@ public class HomepageController {
 
     // List of all customers, which were created in system and will be displayed in CustomersScene.fxml scene table
     private ObservableList<Customer> customersObservableList = FXCollections.observableArrayList();
+    private ObservableList<Product> productsObservableList = FXCollections.observableArrayList();
+    private ObservableList<Invoice> invoicesObservableList = FXCollections.observableArrayList();
+
+    public HomepageController(
+            ObservableList<Customer> customersObservableList,
+            ObservableList<Product> productsObservableList,
+            ObservableList<Invoice> invoicesObservableList
+    ) {
+        this.setCustomersObservableList(customersObservableList);
+        this.setProductsObservableList(productsObservableList);
+        this.setInvoicesObservableList(invoicesObservableList);
+    }
 
     /*
      * Getters and Setters
@@ -70,27 +90,118 @@ public class HomepageController {
         this.customersObservableList = customersObservableList;
     }
 
+    public ObservableList<Product> getProductsObservableList() {
+        return productsObservableList;
+    }
+
+    public void setProductsObservableList(ObservableList<Product> productsObservableList) {
+        this.productsObservableList = productsObservableList;
+    }
+
+    public ObservableList<Invoice> getInvoicesObservableList() {
+        return invoicesObservableList;
+    }
+
+    public void setInvoicesObservableList(ObservableList<Invoice> invoicesObservableList) {
+        this.invoicesObservableList = invoicesObservableList;
+    }
+
     /*
      * End of Getters and Setters
      */
 
+    // This function is used in EditCustomerController and CreateCustomerContorller, when user click on Back button
     public void backToCustomersScene(ActionEvent event) {
         // When returning from EditCustomerScene.fxml scene we need to set selectedCustomer back to null
         // it doesn't have impact on other scenes, so we can set it to null even when we go from CreateCustomerScene.fxml scene
+        this.setControllerAndPathForCustomersScene();
+        this.switchScene(event);
+    }
+
+    // Set controller and scenePath before changing to CustomersScene.fxml
+    public void setControllerAndPathForCustomersScene() {
         this.setScenePath(CUSTOMERS_SCENE);
-        this.setController(new CustomersController());
-        this.changeScene(event);
+        // Passing data about customers, products and invoices to next controller
+        CustomersController customersController = new CustomersController(
+                this.getCustomersObservableList(),
+                this.getProductsObservableList(),
+                this.getInvoicesObservableList()
+        );
+
+        this.setController(customersController);
+    }
+
+    // Set controller and scenePath before changing to HomepageScene.fxml
+    public void setControllerAndPathForProductsScene() {
+        this.setScenePath(PRODUCTS_SCENE);
+        // Passing data about customers, products and invoices to next controller
+        ProductsController productsController = new ProductsController(
+                this.getCustomersObservableList(),
+                this.getProductsObservableList(),
+                this.getInvoicesObservableList()
+        );
+
+        this.setController(productsController);
+    }
+
+    // Set controller and scenePath before changing to HomepageScene.fxml
+    public void setControllerAndPathForInvoicesScene() {
+        this.setScenePath(INVOICES_SCENE);
+        // Passing data about customers, products and invoices to next controller
+        InvoicesController invoicesController = new InvoicesController(
+                this.getCustomersObservableList(),
+                this.getProductsObservableList(),
+                this.getInvoicesObservableList()
+        );
+
+        this.setController(invoicesController);
+    }
+
+    // Set controller and scenePath before changing to HomepageScene.fxml
+    public void setControllerAndPathForHomepageScene() {
+        this.setScenePath(HOMEPAGE);
+        // Passing data about customers, products and invoices to next controller
+        HomepageController homepageController = new HomepageController(
+                this.getCustomersObservableList(),
+                this.getProductsObservableList(),
+                this.getInvoicesObservableList()
+        );
+        this.setController(homepageController);
     }
 
     // Change scene based on the navbar Button
     public void changeScene(ActionEvent event) {
+        // Inspiration from https://stackoverflow.com/questions/49827633/javafx-get-the-clicked-button-value
+        Button clickedButton = (Button) event.getSource();
+        String buttonText = clickedButton.getText();
+
+        this.setScenePathAndController(buttonText);
+
+        this.switchScene(event);
+    }
+
+    // This function is invoke only if one of navbar button is clicked
+    public void setScenePathAndController(String buttonText) {
+        // Based on button text find out which scene should be set
+        switch (buttonText) {
+            case CUSTOMERS:
+                this.setControllerAndPathForCustomersScene();
+                break;
+            case PRODUCTS:
+                this.setControllerAndPathForProductsScene();
+                break;
+            case INVOICES:
+                this.setControllerAndPathForInvoicesScene();
+                break;
+            case HOME:
+                this.setControllerAndPathForHomepageScene();
+                break;
+        }
+    }
+
+    // When scenePath and controller is set program is going to change a scene on the screen
+    public void switchScene(ActionEvent event) {
         try {
-            // Inspiration from https://stackoverflow.com/questions/49827633/javafx-get-the-clicked-button-value
-            Button clickedButton = (Button) event.getSource();
-            String buttonText = clickedButton.getText();
-
-            this.setScenePathAndController(buttonText);
-
             if (!this.getScenePath().equals("")) {
                 // This was taken from my school project in second grade on DBS
                 // https://github.com/FIIT-DBS2020/project-hlavacka_muller/blob/master/src/GUI/SwitchScene.java
@@ -111,25 +222,32 @@ public class HomepageController {
         }
     }
 
-    public void setScenePathAndController(String buttonText) {
-        // Based on button text find out which scene should be set
-        switch (buttonText) {
-            case CUSTOMERS:
-                this.setScenePath(CUSTOMERS_SCENE);
-                this.setController(new CustomersController());
-                break;
-            case PRODUCTS:
-                this.setScenePath(PRODUCTS_SCENE);
-                this.setController(new ProductsController());
-                break;
-            case INVOICES:
-                this.setScenePath(INVOICES_SCENE);
-                this.setController(new InvoicesController());
-                break;
-            case HOME:
-                this.setScenePath(HOMEPAGE);
-                this.setController(new HomepageController());
-                break;
-        }
+    /*
+     * PopUps Windows
+     */
+
+    // Inspiration on PopUp windows on https://stackoverflow.com/questions/26341152/controlsfx-dialogs-deprecated-for-what/32618003#32618003
+    public void showSuccessPopUp(String headerText, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.setTitle("Information");
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+
+        alert.showAndWait();
     }
+
+    public void showErrorPopUp(String headerText, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.setTitle("Error");
+        alert.setHeaderText(ERROR);
+        alert.setContentText(contentText);
+
+        alert.showAndWait();
+    }
+
+    /*
+     * End of PopUps Windows
+     */
 }
