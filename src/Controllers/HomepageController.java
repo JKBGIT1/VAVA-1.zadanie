@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -22,6 +23,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Optional;
 
 public class HomepageController {
 
@@ -35,6 +37,7 @@ public class HomepageController {
     public static final String EDIT_SUCCESS = "Edit success";
     public static final String ERROR = "Something went wrong";
     public static final String INFORMATION = "Information";
+    public static final String INPUT = "Enter requested data";
 
     // Paths to fxmls files, which are used, for switching between scenes
     public static final String CUSTOMERS_SCENE = "../FXMLs/CustomersScene.fxml";
@@ -369,10 +372,30 @@ public class HomepageController {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initStyle(StageStyle.UTILITY);
         alert.setTitle("Error");
-        alert.setHeaderText(ERROR);
+        alert.setHeaderText(headerText);
         alert.setContentText(contentText);
 
         alert.showAndWait();
+    }
+
+    public int showInputDialog(String contentText) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.initStyle(StageStyle.UTILITY);
+        dialog.setTitle("Fill text field");
+        dialog.setHeaderText(INPUT);
+        dialog.setContentText(contentText);
+
+        Optional<String> result = dialog.showAndWait();
+
+        if (result.isPresent()) {
+            try {
+                return Integer.parseInt(result.get());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        return 1; // Default value will be 1, if user didn't enter int.
     }
 
     /*

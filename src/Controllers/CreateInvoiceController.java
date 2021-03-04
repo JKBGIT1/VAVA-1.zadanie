@@ -69,10 +69,19 @@ public class CreateInvoiceController extends HomepageController implements Initi
                     return;
                 }
 
-//                double totalPrice = this.convertStringToDouble(tfTotalPrice.getText()); // If user didn't enter number catch will handle it
+                // Get selected customer and create new instance of it
                 Customer selectedCustomer = customersTableView.getSelectionModel().getSelectedItem();
+                Customer newCustomer = new Customer(
+                        selectedCustomer.getFirstName(),
+                        selectedCustomer.getLastName(),
+                        selectedCustomer.getStreet(),
+                        selectedCustomer.getHouseNumber(),
+                        selectedCustomer.getCity(),
+                        selectedCustomer.getPostalCode()
+                );
+
                 // Before setting selectedInvoice in new Controller program creates new object of Invoice
-                this.changeToCreateInvoiceSelectProductsScene(event, new Invoice(date, selectedCustomer));
+                this.changeToCreateInvoiceSelectProductsScene(event, new Invoice(date, newCustomer));
 
             } else if (this.getSelectedInvoice() != null) { // Invoice was already created and it is stored in selectedInvoice
                 // Need to check if user wants to change some data in Invoice
@@ -82,7 +91,6 @@ public class CreateInvoiceController extends HomepageController implements Initi
                     return;
                 }
 
-//                double totalPrice = this.convertStringToDouble(tfTotalPrice.getText()); // If user didn't enter number catch will handle it
                 this.getSelectedInvoice().setDate(date);
 
                 // User select a new customer for this Invoice

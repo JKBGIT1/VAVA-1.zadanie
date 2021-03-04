@@ -82,8 +82,19 @@ public class CreateInvoiceSelectProductsController extends HomepageController im
             this.showErrorPopUp(INFORMATION, "You need to select product in 'All products' table, if you want to add it to Invoice.");
         } else {
             ObservableList<Product> selectedProducts = this.getSelectedInvoice().getInvoiceProductsObservableList();
-            // Add selected product from All products table to all products in current Invoice
-            selectedProducts.add(allProductsTableView.getSelectionModel().getSelectedItem());
+            // Get selected product from list of all products
+            Product selectedItem = allProductsTableView.getSelectionModel().getSelectedItem();
+
+            // Because we are chaning count value we need to create a new object and copy attributes from selected product
+            Product newProduct = new Product(
+                    selectedItem.getName(),
+                    selectedItem.getDescription(),
+                    this.convertStringToDouble(selectedItem.getPrice())
+            );
+            newProduct.setCount(this.showInputDialog("Enter number of selected product: "));
+
+            // Add new instance of selected product from All products table to all products in current Invoice
+            selectedProducts.add(newProduct);
         }
     }
 
