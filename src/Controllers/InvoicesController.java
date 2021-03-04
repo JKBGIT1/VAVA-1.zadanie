@@ -78,7 +78,8 @@ public class InvoicesController extends HomepageController implements Initializa
         CreateInvoiceController createInvoiceController = new CreateInvoiceController(
                 this.getCustomersObservableList(),
                 this.getProductsObservableList(),
-                this.getInvoicesObservableList()
+                this.getInvoicesObservableList(),
+                this.getSelectedInvoice()
         );
 
         this.setController(createInvoiceController);

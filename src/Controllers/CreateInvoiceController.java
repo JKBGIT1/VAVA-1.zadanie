@@ -29,9 +29,11 @@ public class CreateInvoiceController extends HomepageController implements Initi
     public CreateInvoiceController(
             ObservableList<Customer> customersObservableList,
             ObservableList<Product> productsObservableList,
-            ObservableList<Invoice> invoicesObservableList
+            ObservableList<Invoice> invoicesObservableList,
+            Invoice selectedInvoice
     ) {
         super(customersObservableList, productsObservableList, invoicesObservableList);
+        this.setSelectedInvoice(selectedInvoice);
     }
 
 
