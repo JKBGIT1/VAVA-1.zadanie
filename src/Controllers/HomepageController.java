@@ -12,11 +12,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -44,6 +47,7 @@ public class HomepageController {
     public static final String EDIT_PRODUCT_SCENE = "../FXMLs/EditProductScene.fxml";
     public static final String DETAIL_INVOICE_SCENE = "../FXMLs/DetailInvoiceScene.fxml";
     public static final String CREATE_INVOICE_SCENE = "../FXMLs/CreateInvoiceScene.fxml";
+    public static final String CREATE_INVOICE_SELECT_PRODUCTS_SCENE = "../FXMLs/CreateInvoiceSelectProductsScene.fxml";
 
     private String scenePath = "";
     private Object controller = null;
@@ -146,8 +150,8 @@ public class HomepageController {
      * Converting methods
      */
 
+    // NOTE: This function needs to be used inside try and catch
     public double convertStringToDouble(String stringNumber) {
-        // NOTE: This function needs to be used inside try and catch
         // Before parse replace commas with dots to prevent error
         double doubleNumber = Double.parseDouble(stringNumber.replaceAll(",","."));
 
@@ -158,14 +162,32 @@ public class HomepageController {
         return doubleNumber;
     }
 
+    // NOTE: This function needs to be used inside try and catch
     public String convertDateToString(Date date) {
         // Inspiration from https://www.javatpoint.com/java-date-to-string
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         return dateFormat.format(date);
     }
 
+    // NOTE: This function needs to be used inside try and catch
     public String convertDoubleToString(double price) {
         return String.valueOf(price);
+    }
+
+    public Date convertStringToDate(String stringDate) {
+        try {
+            // Try to handle more types of date format
+            stringDate = stringDate.replaceAll("/", ".");
+            stringDate = stringDate.replaceAll("-", ".");
+            stringDate = stringDate.replaceAll(",", ".");
+
+            Date date = new SimpleDateFormat("dd.MM.yyyy").parse(stringDate); // Inspiration from https://www.javatpoint.com/java-string-to-date
+            return date;
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return null;
     }
 
     /*
@@ -292,6 +314,41 @@ public class HomepageController {
             e.printStackTrace();
         }
     }
+
+    /*
+     * Setting cell values to TableView columns
+     */
+
+    public void setCellValuesForCustomersTableView(
+            TableColumn<Customer, String> firstNameCol,
+            TableColumn<Customer, String> lastNameCol,
+            TableColumn<Customer, String> streetCol,
+            TableColumn<Customer, String> houseNumberCol,
+            TableColumn<Customer, String> cityCol,
+            TableColumn<Customer, String> postalCodeCol
+    ) {
+        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        streetCol.setCellValueFactory(new PropertyValueFactory<>("street"));
+        houseNumberCol.setCellValueFactory(new PropertyValueFactory<>("houseNumber"));
+        cityCol.setCellValueFactory(new PropertyValueFactory<>("city"));
+        postalCodeCol.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
+    }
+
+    public void setCellValueForProductsTableView(
+            TableColumn<Product, String> nameCol,
+            TableColumn<Product, String> descriptionCol,
+            TableColumn<Product, String> priceCol
+    ) {
+        // Each column will have set value based on the private parameter in Product Class
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+    }
+
+    /*
+     * End of Setting cell values to TableView columns
+     */
 
     /*
      * PopUps Windows

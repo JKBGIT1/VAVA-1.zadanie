@@ -32,12 +32,7 @@ public class CustomersController extends HomepageController implements Initializ
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Each column will have set value based on the private parameter in Customer Class
-        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        streetCol.setCellValueFactory(new PropertyValueFactory<>("street"));
-        houseNumberCol.setCellValueFactory(new PropertyValueFactory<>("houseNumber"));
-        cityCol.setCellValueFactory(new PropertyValueFactory<>("city"));
-        postalCodeCol.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
+        this.setCellValuesForCustomersTableView(firstNameCol, lastNameCol, streetCol, houseNumberCol, cityCol, postalCodeCol);
 
         // This function display data in tableView
         this.displayInTable();
