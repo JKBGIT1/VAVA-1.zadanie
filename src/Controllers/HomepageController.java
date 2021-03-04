@@ -16,6 +16,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class HomepageController {
 
@@ -153,6 +156,16 @@ public class HomepageController {
             doubleNumber = Math.floor(doubleNumber * 100) / 100; // Taken from https://stackoverflow.com/questions/7747469/how-can-i-truncate-a-double-to-only-two-decimal-places-in-java
         }
         return doubleNumber;
+    }
+
+    public String convertDateToString(Date date) {
+        // Inspiration from https://www.javatpoint.com/java-date-to-string
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        return dateFormat.format(date);
+    }
+
+    public String convertDoubleToString(double price) {
+        return String.valueOf(price);
     }
 
     /*
