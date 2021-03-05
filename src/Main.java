@@ -20,6 +20,7 @@ public class Main extends Application {
         Parent root = fxmlLoader.load();
         primaryStage.setTitle("Easy Invoices");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

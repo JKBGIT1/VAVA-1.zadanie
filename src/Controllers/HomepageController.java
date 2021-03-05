@@ -10,10 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -357,7 +354,7 @@ public class HomepageController {
      * PopUps Windows
      */
 
-    // Inspiration on PopUp windows on https://stackoverflow.com/questions/26341152/controlsfx-dialogs-deprecated-for-what/32618003#32618003
+    // Inspiration for PopUp windows on https://stackoverflow.com/questions/26341152/controlsfx-dialogs-deprecated-for-what/32618003#32618003
     public void showSuccessPopUp(String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.initStyle(StageStyle.UTILITY);
@@ -396,6 +393,24 @@ public class HomepageController {
         }
 
         return 1; // Default value will be 1, if user didn't enter int.
+    }
+
+    public boolean showConfirmationPopUp(String headerText, String contentText ) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.setTitle("Choose an option");
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent()) {
+            // If condition under this comment is true, user confirm action.
+            if (result.get().getText().equals("OK")) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /*

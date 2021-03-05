@@ -71,9 +71,12 @@ public class CreateInvoiceSelectProductsController extends HomepageController im
         if (selectedProductsTableView.getSelectionModel().getSelectedItem() == null) {
             this.showErrorPopUp(INFORMATION, "You need to select product in 'Products in invoice' table, if you want to remove it.");
         } else {
-            ObservableList<Product> selectedProducts = this.getSelectedInvoice().getInvoiceProductsObservableList();
-            // Remove selected item from products in current Invoice
-            selectedProducts.remove(selectedProductsTableView.getSelectionModel().getSelectedItem());
+            // User needs to confirm delete action
+            if (this.showConfirmationPopUp("Remove product", "Do you really want to remove product form Invoice?")) {
+                ObservableList<Product> selectedProducts = this.getSelectedInvoice().getInvoiceProductsObservableList();
+                // Remove selected item from products in current Invoice
+                selectedProducts.remove(selectedProductsTableView.getSelectionModel().getSelectedItem());
+            }
         }
     }
 
