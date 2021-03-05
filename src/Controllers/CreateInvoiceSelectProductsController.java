@@ -37,9 +37,11 @@ public class CreateInvoiceSelectProductsController extends HomepageController im
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // This will set cells to tableView with all products
-        this.setCellValueForProductsTableView(nameColAll, descriptionColAll, priceColAll);
+        this.setCellValueForProductsTableView(nameColAll, descriptionColAll);
+        priceColAll.setCellValueFactory(new PropertyValueFactory<>("price"));
         // This will set cells to tableView with selected products in Invoice
-        this.setCellValueForProductsTableView(nameColSelected, descriptionColSelected, priceColSelected);
+        this.setCellValueForProductsTableView(nameColSelected, descriptionColSelected);
+        priceColSelected.setCellValueFactory(new PropertyValueFactory<>("totalProductsPrice"));
         // There is one more cell in selected tableView
         countColSelected.setCellValueFactory(new PropertyValueFactory<>("count"));
 
@@ -95,6 +97,8 @@ public class CreateInvoiceSelectProductsController extends HomepageController im
                     this.convertStringToDouble(selectedItem.getPrice())
             );
             newProduct.setCount(this.showInputDialog("Enter number of selected product: "));
+            // Calculate total price for this products
+            newProduct.setTotalProductsPrice(newProduct.getCount() * Double.parseDouble(newProduct.getPrice()));
 
             // Add new instance of selected product from All products table to all products in current Invoice
             selectedProducts.add(newProduct);
@@ -109,8 +113,7 @@ public class CreateInvoiceSelectProductsController extends HomepageController im
 
         // loop through every single product in selectedInvoice
         for (Product product : productsInInvoice) {
-            // Need to parse price from String to double before adding to invoiceTotalPrice
-            invoiceTotalPrice += (Double.parseDouble(product.getPrice()) * product.getCount());
+            invoiceTotalPrice += product.getTotalProductsPrice();
         }
 
         // Set totalPrice to selectedInvoice

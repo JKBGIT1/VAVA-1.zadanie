@@ -5,6 +5,7 @@ public class Product {
     private String description;
     private int count = 1; // Value of this attribute shows how many types of this products are in one Invoice. By default 1.
     private double price;
+    private double totalProductsPrice;
 
     public Product(String name, String description, double price) {
         this.name = name;
@@ -43,5 +44,13 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public double getTotalProductsPrice() {
+        return totalProductsPrice;
+    }
+
+    public void setTotalProductsPrice(double totalProductsPrice) {
+        this.totalProductsPrice = totalProductsPrice;
     }
 }

@@ -62,7 +62,23 @@ public class CreateInvoiceController extends HomepageController implements Initi
 
     public void selectProductsForInvoiceScene(ActionEvent event) {
         try {
-            if (customersTableView.getSelectionModel().getSelectedItem() != null) {
+            if (this.getSelectedInvoice() != null) { // Invoice was already created and it is stored in selectedInvoice
+                // Need to check if user wants to change some data in Invoice
+                Date date = this.convertStringToDate(tfDate.getText()); // If user enter wrong date format next condition will take care of it
+                if (date == null) {
+                    this.showErrorPopUp(ERROR, "Check date format in date of issue. It should be like 'dd.mm.yyyy'");
+                    return;
+                }
+
+                this.getSelectedInvoice().setDate(date);
+
+                // User select a new customer for this Invoice
+                if (customersTableView.getSelectionModel().getSelectedItem() != null) {
+                    this.getSelectedInvoice().setCustomer(customersTableView.getSelectionModel().getSelectedItem());
+                }
+
+                this.changeToCreateInvoiceSelectProductsScene(event, this.getSelectedInvoice());
+            } else if (customersTableView.getSelectionModel().getSelectedItem() != null) {
                 Date date = this.convertStringToDate(tfDate.getText()); // If user enter wrong date format next condition will take care of it
                 if (date == null) {
                     this.showErrorPopUp(ERROR, "Check date format in date of issue. It should be like 'dd.mm.yyyy'");
@@ -82,24 +98,6 @@ public class CreateInvoiceController extends HomepageController implements Initi
 
                 // Before setting selectedInvoice in new Controller program creates new object of Invoice
                 this.changeToCreateInvoiceSelectProductsScene(event, new Invoice(date, newCustomer));
-
-            } else if (this.getSelectedInvoice() != null) { // Invoice was already created and it is stored in selectedInvoice
-                // Need to check if user wants to change some data in Invoice
-                Date date = this.convertStringToDate(tfDate.getText()); // If user enter wrong date format next condition will take care of it
-                if (date == null) {
-                    this.showErrorPopUp(ERROR, "Check date format in date of issue. It should be like 'dd.mm.yyyy'");
-                    return;
-                }
-
-                this.getSelectedInvoice().setDate(date);
-
-                // User select a new customer for this Invoice
-                if (customersTableView.getSelectionModel().getSelectedItem() != null) {
-                    this.getSelectedInvoice().setCustomer(customersTableView.getSelectionModel().getSelectedItem());
-                }
-
-                this.changeToCreateInvoiceSelectProductsScene(event, this.getSelectedInvoice());
-
 
             } else {
                 this.showSuccessPopUp(INFORMATION, "You need to select a customer from table.");

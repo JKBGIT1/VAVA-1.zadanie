@@ -57,7 +57,7 @@ public class DetailInvoiceController extends HomepageController implements Initi
             nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
             descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
             countCol.setCellValueFactory(new PropertyValueFactory<>("count"));
-            priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+            priceCol.setCellValueFactory(new PropertyValueFactory<>("totalProductsPrice"));
 
             // This function display data in tableView
             this.displayInTable(invoice);

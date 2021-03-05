@@ -337,13 +337,11 @@ public class HomepageController {
 
     public void setCellValueForProductsTableView(
             TableColumn<Product, String> nameCol,
-            TableColumn<Product, String> descriptionCol,
-            TableColumn<Product, String> priceCol
+            TableColumn<Product, String> descriptionCol
     ) {
         // Each column will have set value based on the private parameter in Product Class
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
-        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
     /*

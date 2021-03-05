@@ -32,7 +32,8 @@ public class ProductsController extends HomepageController implements Initializa
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Each column will have set value based on the private parameter in Product Class
-        this.setCellValueForProductsTableView(nameCol, descriptionCol, priceCol);
+        this.setCellValueForProductsTableView(nameCol, descriptionCol);
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         // This function display data in tableView
         this.displayInTable();

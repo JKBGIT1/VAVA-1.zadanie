@@ -31,26 +31,26 @@
                     <children>
                         <HBox alignment="CENTER" prefHeight="109.0" prefWidth="1300.0" spacing="20.0">
                             <children>
-                                <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #343a40;" text="Home" textFill="WHITE">
+                                <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Home" textFill="WHITE">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="20.0" />
                                     </font></Button>
-                                <Button fx:id="productsBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #343a40;" text="Products" textFill="WHITE">
+                                <Button fx:id="productsBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Products" textFill="WHITE">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="20.0" />
                                     </font></Button>
-                                <Button fx:id="invoicesBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #343a40;" text="Invoices" textFill="WHITE">
+                                <Button fx:id="invoicesBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Invoices" textFill="WHITE">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="20.0" />
                                     </font></Button>
-                                <Button fx:id="customersBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #343a40;" text="Customers" textFill="WHITE">
+                                <Button fx:id="customersBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Customers" textFill="WHITE">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="20.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="quitBtn" mnemonicParsing="false" onAction="#endProgram" prefHeight="45.0" prefWidth="110.0" style="-fx-background-color: #c82333;" text="Quit" textFill="WHITE">
+                                <Button fx:id="quitBtn" mnemonicParsing="false" onAction="#endProgram" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: #c82333;" text="Quit" textFill="WHITE">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="20.0" />
                                     </font>
                                     <HBox.margin>
                                         <Insets left="150.0" />
@@ -86,14 +86,14 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="25.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                             <children>
-                                <Button fx:id="editProductBtn" maxWidth="200.0" mnemonicParsing="false" onAction="#editProductScene" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Edit" textFill="WHITE">
+                                <Button fx:id="editProductBtn" maxWidth="200.0" mnemonicParsing="false" onAction="#editProductScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #ffc107;" text="Edit" textFill="WHITE">
                                     <font>
-                                        <Font name="System Bold" size="20.0" />
+                                        <Font name="System Bold" size="22.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="createtProductBn" maxWidth="200.0" mnemonicParsing="false" onAction="#createProductScene" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #28a745;" text="Create" textFill="WHITE">
+                                <Button fx:id="createtProductBn" maxWidth="200.0" mnemonicParsing="false" onAction="#createProductScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #28a745;" text="Create" textFill="WHITE">
                                     <font>
-                                        <Font name="System Bold" size="20.0" />
+                                        <Font name="System Bold" size="22.0" />
                                     </font>
                                 </Button>
                             </children>
