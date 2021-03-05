@@ -37,17 +37,17 @@ public class HomepageController {
     public static final String INPUT = "Enter requested data";
 
     // Paths to fxmls files, which are used, for switching between scenes
-    public static final String CUSTOMERS_SCENE = "../FXMLs/CustomersScene.fxml";
-    public static final String PRODUCTS_SCENE = "../FXMLs/ProductsScene.fxml";
-    public static final String INVOICES_SCENE = "../FXMLs/InvoicesScene.fxml";
-    public static final String HOMEPAGE = "../FXMLs/Homepage.fxml";
-    public static final String CREATE_CUSTOMER_SCENE = "../FXMLs/CreateCustomerScene.fxml";
-    public static final String EDIT_CUSTOMER_SCENE = "../FXMLs/EditCustomerScene.fxml";
-    public static final String CREATE_PRODUCT_SCENE = "../FXMLs/CreateProductScene.fxml";
-    public static final String EDIT_PRODUCT_SCENE = "../FXMLs/EditProductScene.fxml";
-    public static final String DETAIL_INVOICE_SCENE = "../FXMLs/DetailInvoiceScene.fxml";
-    public static final String CREATE_INVOICE_SCENE = "../FXMLs/CreateInvoiceScene.fxml";
-    public static final String CREATE_INVOICE_SELECT_PRODUCTS_SCENE = "../FXMLs/CreateInvoiceSelectProductsScene.fxml";
+    public static final String CUSTOMERS_SCENE = "/FXMLs/CustomersScene.fxml";
+    public static final String PRODUCTS_SCENE = "/FXMLs/ProductsScene.fxml";
+    public static final String INVOICES_SCENE = "/FXMLs/InvoicesScene.fxml";
+    public static final String HOMEPAGE = "/FXMLs/Homepage.fxml";
+    public static final String CREATE_CUSTOMER_SCENE = "/FXMLs/CreateCustomerScene.fxml";
+    public static final String EDIT_CUSTOMER_SCENE = "/FXMLs/EditCustomerScene.fxml";
+    public static final String CREATE_PRODUCT_SCENE = "/FXMLs/CreateProductScene.fxml";
+    public static final String EDIT_PRODUCT_SCENE = "/FXMLs/EditProductScene.fxml";
+    public static final String DETAIL_INVOICE_SCENE = "/FXMLs/DetailInvoiceScene.fxml";
+    public static final String CREATE_INVOICE_SCENE = "/FXMLs/CreateInvoiceScene.fxml";
+    public static final String CREATE_INVOICE_SELECT_PRODUCTS_SCENE = "/FXMLs/CreateInvoiceSelectProductsScene.fxml";
 
     private String scenePath = "";
     private Object controller = null;
