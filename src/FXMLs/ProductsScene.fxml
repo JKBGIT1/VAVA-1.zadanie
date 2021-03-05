@@ -86,7 +86,7 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="25.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                             <children>
-                                <Button fx:id="editProductBtn" maxWidth="200.0" mnemonicParsing="false" onAction="#editProductScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #ffc107;" text="Edit" textFill="WHITE">
+                                <Button fx:id="editProductBtn" maxWidth="200.0" mnemonicParsing="false" onAction="#editProductScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #f1b40d;" text="Edit" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="22.0" />
                                     </font>
