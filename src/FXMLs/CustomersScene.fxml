@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -11,8 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.geometry.Insets?>
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="858.0" prefWidth="1301.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="858.0" prefWidth="1301.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
@@ -65,8 +65,8 @@
             <GridPane BorderPane.alignment="CENTER">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="350.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="350.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
               </columnConstraints>
               <rowConstraints>
@@ -86,26 +86,26 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="25.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <children>
-                        <Button fx:id="editCustomerBtn" maxWidth="200.0" mnemonicParsing="false" onAction="#editCustomerScene" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Edit" textFill="WHITE">
+                        <Button fx:id="editCustomerBtn" maxWidth="200.0" mnemonicParsing="false" onAction="#editCustomerScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #ffc107;" text="Edit" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="20.0" />
+                              <Font name="System Bold" size="22.0" />
                            </font>
                         </Button>
-                        <Button fx:id="createCustomerBtn" maxWidth="200.0" mnemonicParsing="false" onAction="#createCustomerScene" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #28a745;" text="Create" textFill="WHITE">
+                        <Button fx:id="createCustomerBtn" maxWidth="200.0" mnemonicParsing="false" onAction="#createCustomerScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #28a745;" text="Create" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="20.0" />
+                              <Font name="System Bold" size="22.0" />
                            </font>
                         </Button>
                      </children>
                   </HBox>
                   <TableView fx:id="customersTableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
                     <columns>
-                      <TableColumn fx:id="firstNameCol" prefWidth="165.0" text="First name" />
-                      <TableColumn fx:id="lastNameCol" prefWidth="165.0" text="Last name" />
-                        <TableColumn fx:id="streetCol" prefWidth="165.0" text="Street" />
-                        <TableColumn fx:id="houseNumberCol" prefWidth="165.0" text="House number" />
-                        <TableColumn fx:id="cityCol" prefWidth="165.0" text="City" />
-                        <TableColumn fx:id="postalCodeCol" prefWidth="165.0" text="Postal code" />
+                      <TableColumn fx:id="firstNameCol" prefWidth="184.00003051757812" text="First name" />
+                      <TableColumn fx:id="lastNameCol" prefWidth="197.0" text="Last name" />
+                        <TableColumn fx:id="streetCol" prefWidth="204.0" text="Street" />
+                        <TableColumn fx:id="houseNumberCol" prefWidth="183.0" text="House number" />
+                        <TableColumn fx:id="cityCol" prefWidth="189.0" text="City" />
+                        <TableColumn fx:id="postalCodeCol" prefWidth="182.0" text="Postal code" />
                     </columns>
                   </TableView>
                </children>

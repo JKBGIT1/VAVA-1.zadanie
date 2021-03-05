@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -11,8 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.geometry.Insets?>
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="858.0" prefWidth="1301.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="858.0" prefWidth="1301.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
@@ -65,8 +65,8 @@
                 <GridPane BorderPane.alignment="CENTER">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="350.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="350.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
                     </columnConstraints>
                     <rowConstraints>
@@ -86,14 +86,14 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="25.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                             <children>
-                                <Button fx:id="detailInvoiceBtn" maxWidth="200.0" mnemonicParsing="false" onAction="#detailInvoiceScene" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Detail" textFill="WHITE">
+                                <Button fx:id="detailInvoiceBtn" maxWidth="200.0" mnemonicParsing="false" onAction="#detailInvoiceScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Detail" textFill="WHITE">
                                     <font>
-                                        <Font name="System Bold" size="20.0" />
+                                        <Font name="System Bold" size="22.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="createInvoiceBtn" maxWidth="200.0" mnemonicParsing="false" onAction="#createInvoiceScene" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #28a745;" text="Create" textFill="WHITE">
+                                <Button fx:id="createInvoiceBtn" maxWidth="200.0" mnemonicParsing="false" onAction="#createInvoiceScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #28a745;" text="Create" textFill="WHITE">
                                     <font>
-                                        <Font name="System Bold" size="20.0" />
+                                        <Font name="System Bold" size="22.0" />
                                     </font>
                                 </Button>
                             </children>
@@ -101,8 +101,8 @@
                         <TableView fx:id="invoicesTableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
                             <columns>
                                 <TableColumn fx:id="dateCol" prefWidth="289.0" text="Date of issue" />
-                        <TableColumn fx:id="customerFullNameCol" prefWidth="422.0" text="Customer" />
-                                <TableColumn fx:id="totalPriceCol" prefWidth="277.0" text="Total price" />
+                        <TableColumn fx:id="customerFullNameCol" prefWidth="501.0" text="Customer" />
+                                <TableColumn fx:id="totalPriceCol" prefWidth="349.0" text="Total price" />
                             </columns>
                         </TableView>
                   <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" />
