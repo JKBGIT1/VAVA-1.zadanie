@@ -413,6 +413,10 @@ public class HomepageController {
         return false;
     }
 
+    public void endProgram() {
+        System.exit(0);
+    }
+
     /*
      * End of PopUps Windows
      */

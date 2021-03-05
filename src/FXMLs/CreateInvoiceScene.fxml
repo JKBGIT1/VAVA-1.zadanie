@@ -31,33 +31,32 @@
             <top>
                 <HBox prefHeight="109.0" prefWidth="1301.0" style="-fx-background-color: #eeeeee;" BorderPane.alignment="CENTER">
                     <children>
-                        <HBox alignment="CENTER" prefHeight="109.0" prefWidth="376.0">
+                        <HBox alignment="CENTER" prefHeight="109.0" prefWidth="1300.0" spacing="20.0">
                             <children>
-                                <Label text="Easy invoices">
+                                <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Home" textFill="WHITE">
                                     <font>
-                                        <Font name="Arial" size="36.0" />
+                                        <Font name="System Bold" size="20.0" />
+                                    </font></Button>
+                                <Button fx:id="productsBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Products" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font></Button>
+                                <Button fx:id="invoicesBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Invoices" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font></Button>
+                                <Button fx:id="customersBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Customers" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
                                     </font>
-                                </Label>
-                            </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="109.0" prefWidth="926.0" spacing="20.0">
-                            <children>
-                                <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" text="Home">
+                                </Button>
+                                <Button fx:id="quitBtn" mnemonicParsing="false" onAction="#endProgram" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: #c82333;" text="Quit" textFill="WHITE">
                                     <font>
-                                        <Font size="18.0" />
-                                    </font></Button>
-                                <Button fx:id="productsBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" text="Products">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font></Button>
-                                <Button fx:id="invoicesBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" text="Invoices">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font></Button>
-                                <Button fx:id="customersBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" text="Customers">
-                                    <font>
-                                        <Font size="18.0" />
+                                        <Font name="System Bold" size="20.0" />
                                     </font>
+                                    <HBox.margin>
+                                        <Insets left="150.0" />
+                                    </HBox.margin>
                                 </Button>
                             </children>
                         </HBox>

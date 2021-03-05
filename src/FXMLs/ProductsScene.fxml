@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="858.0" prefWidth="1301.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="858.0" prefWidth="1301.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
@@ -28,33 +29,32 @@
             <top>
                 <HBox prefHeight="109.0" prefWidth="1301.0" style="-fx-background-color: #eeeeee;" BorderPane.alignment="CENTER">
                     <children>
-                        <HBox alignment="CENTER" prefHeight="109.0" prefWidth="376.0">
+                        <HBox alignment="CENTER" prefHeight="109.0" prefWidth="1300.0" spacing="20.0">
                             <children>
-                                <Label text="Easy invoices">
+                                <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Home" textFill="WHITE">
                                     <font>
-                                        <Font name="Arial" size="36.0" />
+                                        <Font name="System Bold" size="20.0" />
+                                    </font></Button>
+                                <Button fx:id="productsBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Products" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font></Button>
+                                <Button fx:id="invoicesBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Invoices" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font></Button>
+                                <Button fx:id="customersBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Customers" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
                                     </font>
-                                </Label>
-                            </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="109.0" prefWidth="926.0" spacing="20.0">
-                            <children>
-                                <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" text="Home">
+                                </Button>
+                                <Button fx:id="quitBtn" mnemonicParsing="false" onAction="#endProgram" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: #c82333;" text="Quit" textFill="WHITE">
                                     <font>
-                                        <Font size="18.0" />
-                                    </font></Button>
-                                <Button fx:id="productsBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" text="Products">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font></Button>
-                                <Button fx:id="invoicesBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" text="Invoices">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font></Button>
-                                <Button fx:id="customersBtn" mnemonicParsing="false" onAction="#changeScene" prefHeight="45.0" prefWidth="200.0" text="Customers">
-                                    <font>
-                                        <Font size="18.0" />
+                                        <Font name="System Bold" size="20.0" />
                                     </font>
+                                    <HBox.margin>
+                                        <Insets left="150.0" />
+                                    </HBox.margin>
                                 </Button>
                             </children>
                         </HBox>
@@ -64,10 +64,10 @@
             <center>
                 <GridPane BorderPane.alignment="CENTER">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="350.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="350.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="5.0" prefWidth="5.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="5.0" prefWidth="5.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
@@ -86,23 +86,23 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="25.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                             <children>
-                                <Button fx:id="editProductBtn" maxWidth="200.0" mnemonicParsing="false" onAction="#editProductScene" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #117a8b;" text="Edit" textFill="WHITE">
+                                <Button fx:id="editProductBtn" maxWidth="200.0" mnemonicParsing="false" onAction="#editProductScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #ffc107;" text="Edit" textFill="WHITE">
                                     <font>
-                                        <Font name="System Bold" size="20.0" />
+                                        <Font name="System Bold" size="22.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="createtProductBn" maxWidth="200.0" mnemonicParsing="false" onAction="#createProductScene" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #28a745;" text="Create" textFill="WHITE">
+                                <Button fx:id="createtProductBn" maxWidth="200.0" mnemonicParsing="false" onAction="#createProductScene" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #28a745;" text="Create" textFill="WHITE">
                                     <font>
-                                        <Font name="System Bold" size="20.0" />
+                                        <Font name="System Bold" size="22.0" />
                                     </font>
                                 </Button>
                             </children>
                         </HBox>
                         <TableView fx:id="productsTableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
                             <columns>
-                                <TableColumn fx:id="nameCol" prefWidth="237.0" text="Name" />
-                                <TableColumn fx:id="descriptionCol" prefWidth="568.0" text="Description" />
-                                <TableColumn fx:id="priceCol" minWidth="0.0" prefWidth="184.0" text="Price" />
+                                <TableColumn fx:id="nameCol" prefWidth="280.0" text="Name" />
+                                <TableColumn fx:id="descriptionCol" prefWidth="679.0" text="Description" />
+                                <TableColumn fx:id="priceCol" minWidth="0.0" prefWidth="186.0" text="Price" />
                             </columns>
                         </TableView>
                     </children>
